@@ -221,11 +221,20 @@ paths:
                 vendor_slug: ultimatekicks
                 units: 10
                 duration: 52
-                total_codes: 1000
-                total_redeemed: 312
+
+                stats:
+                  total: 1000
+                  redeemed: 312
+                  pending: 688
+
+                verification_codes:
+                  redeemed:
+                    - xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+                  pending:
+                    - xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         "400":
           description: Failed
-      summary: Reward Code Batch Stats
+      summary: Reward Batch Stats
       operationId: reward_code_batch_stats
       description: >-
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
@@ -251,8 +260,8 @@ paths:
           content:
             application/json:
               example: {}
-      summary: Manage Reward Code Batch
-      operationId: reward_code_batch_manage
+      summary: Reward Batch Update
+      operationId: update_reward_code_batch
       description: >-
         Ability to Manage a batch of Reward Codes by the Vendor. Includes
         assigning various attributes to the batch (after minted). Only the
@@ -264,7 +273,7 @@ paths:
 
         + label (string) - change the vendor assigned label for this batch of codes
       tags:
-        - Vendor Management
+        - Batch Management
       parameters: []
 
   /vendors:
