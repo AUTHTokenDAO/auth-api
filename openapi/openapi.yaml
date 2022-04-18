@@ -423,9 +423,9 @@ paths:
   
 tags:
   - name: Vendor Management
-    description: APIs that require Vendor Management
-  - name: codes
-    description: API for interacting with Reward Codes
+    description: APIs which require the Vendor to authenticate
+  - name: Codes
+    description: Interacting with Reward Codes
   - name: Vendors
     description: Vendor Management
   - name: Oracle
