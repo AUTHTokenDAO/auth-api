@@ -4,7 +4,7 @@
 #
 # see https://dmlls.medium.com/redoc-docs-on-gh-pages-97a8926e9e0f
 
-npx redoc-cli bundle openapi/openapi.yaml
+npx redoc-cli build openapi/openapi.yaml
 
 mv redoc-static.html docs/index.html
 
