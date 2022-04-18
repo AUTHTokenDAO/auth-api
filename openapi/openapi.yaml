@@ -34,7 +34,18 @@ servers:
         description: Your tenant id
 paths:
   /codes/redeem:
-    post:
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Redeem"
+
+            example:
+              code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
+              wallet: XXXX
+              email: me@futurelambo.com
+
       responses:
         "201":
           description: Created
@@ -63,53 +74,8 @@ paths:
         case since it has been redeemed already.
       tags:
         - codes
-      parameters:
-        - name: code
-          in: query
-          description: >-
-            Reward Code to redeem
-          required: true
-          schema:
-            type: string
-        - name: wallet
-          in: query
-          description: >-
-            Solana wallet address this code will be
-            redeemed to
-          required: true
-          schema:
-            type: string
-        - name: email
-          in: query
-          description: >-
-            optional email for individual redeeming code
-          required: false
-          schema:
-            type: string
-        - name: vendorSerial
-          in: query
-          description: >-
-            optional vendor defined product serial number to associate with this Reward Code
-          required: false
-          schema:
-            type: string
+      parameters: []
 
-      requestBody:
-        content:
-          application/json:
-            example:
-              code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
-              address: XXXX
-              email: me@futurelambo.com
-            schema:
-              type: object
-              properties:
-                code:
-                  type: string
-                address:
-                  type: string
-                email:
-                  type: string
   /codes/{code}:
     get:
       responses:
@@ -150,6 +116,7 @@ paths:
           required: true
           schema:
             type: string
+
   /codes/{code}/detail:
     get:
       responses:
@@ -173,6 +140,7 @@ paths:
           required: true
           schema:
             type: string
+
   /codes/{code}/extended:
     put:
       responses:
@@ -237,38 +205,8 @@ paths:
         the rewards.
       tags:
         - vendors
-      parameters:
-        - name: label
-          in: query
-          description: >-
-            vendor supplied label for this
-            batch of Reward Codes (private and only visible to the vendor)
-          required: true
-          schema:
-            type: string
-            minLength: 1
-            maxLength: 100
-        - name: total
-          in: query
-          description: number of Reward Codes that should be minted
-          required: true
-          schema:
-            type: integer
-        - name: units
-          in: query
-          description: number of Reward Units for each Reward Code
-          required: true
-          schema:
-            type: integer
-            maximum: 10000
-        - name: duration
-          in: query
-          description: number of weeks the Reward Codes will be active for once redeemed
-          required: true
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 260
+      parameters: []
+
   /purchases/{order_id}:
     get:
       responses:
@@ -301,6 +239,7 @@ paths:
           required: true
           schema:
             type: string
+
     post:
       responses:
         "400":
@@ -326,6 +265,7 @@ paths:
       tags:
         - Codes
       parameters: []
+
   /vendors:
     get:
       responses:
@@ -350,6 +290,7 @@ paths:
       tags:
         - vendors
       parameters: []
+
     post:
       responses:
         200:
@@ -363,6 +304,7 @@ paths:
       tags:
         - vendors
       parameters: []
+
   /vendors/{vendor_slug}:
     get:
       responses:
@@ -395,6 +337,7 @@ paths:
           required: true
           schema:
             type: string
+
   /oracle/prices/current:
     get:
       responses:
@@ -409,11 +352,16 @@ paths:
       description: >-
         The current and historical Oracle Prices for AUTH including the block
         that they took effect. Pagination by cursor.
-
-        + cursor (optional) (string) Returned from an initial query, allowing client to fetch more results
       tags:
         - oracle
-      parameters: []
+      parameters:
+        - name: cursor
+          in: query
+          description: Returned from an initial query, allowing client to fetch more results
+          required: false
+          schema:
+            type: string
+
   /stats:
     get:
       responses:
@@ -434,7 +382,7 @@ paths:
       parameters: []
 tags:
   - name: codes
-    description: Reward Codes
+    description: API for interacting with Reward Codes
   - name: vendors
     description: Vendor Management
   - name: oracle
@@ -475,6 +423,7 @@ components:
         total:
           description: number of Reward Codes that should be minted
           type: integer
+          minimum: 1
         units:
           description: number of Reward Units for each Reward Code
           type: integer
@@ -485,6 +434,33 @@ components:
           type: integer
           minimum: 1
           maximum: 260
+
+    Redeem:
+      type: object
+      properties:
+        code:
+          description: >-
+            Reward Code to redeem
+          type: string
+          pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+          example: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
+        wallet:
+          description: >-
+            Solana wallet address this code will be
+            redeemed to
+          type: string
+        email:
+          description: >-
+            optional email for individual redeeming code
+          type: string
+          example: me@lambo.com
+        vendorSerial:
+          description: >-
+            optional vendor defined product serial number to associate with this Reward Code
+          type: string
+      required:
+        - code
+        - wallet
 
 x-tagGroups:
   - name: General
