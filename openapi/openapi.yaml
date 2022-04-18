@@ -124,7 +124,7 @@ paths:
           description: OK
         "400":
           description: Invalid Code
-      summary: Code Details
+      summary: Extended Reward Code Details
       operationId: code_details
       description: >-
         Extended detail on a Reward Code. This is only available when
@@ -153,7 +153,7 @@ paths:
               example:
                 status: 400
                 message: "Invalid Code"
-      summary: Update Details
+      summary: Update Reward Code Details
       operationId: update_code_details
       description: Update extended detail on a Reward Code. TBD
       tags:
@@ -224,7 +224,7 @@ paths:
                 total_redeemed: 312
         "400":
           description: Failed
-      summary: Stats Reward Code Batch
+      summary: Reward Code Batch Stats
       operationId: reward_code_batch_stats
       description: >-
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
