@@ -251,6 +251,12 @@ paths:
             type: string
 
     post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Mint"
+
       responses:
         "400":
           description: Failed
@@ -266,12 +272,6 @@ paths:
         Ability to Manage a batch of Reward Codes by the Vendor. Includes
         assigning various attributes to the batch (after minted). Only the
         original purchasing Vendor of the batch can make modifications.
-
-        + redirectURL (string) - URL that users should be redirected to after
-        redeeming a Reward Code (query params will include verification code and
-        additional redemption data)
-
-        + label (string) - change the vendor assigned label for this batch of codes
       tags:
         - Batch Management
       parameters: []
@@ -494,6 +494,36 @@ components:
         - total
         - units
         - duration
+
+    BatchUpdate:
+      type: object
+      properties:
+        affiliate_wallet:
+          description: >-
+            affiliate wallet
+          type: string
+          minLength: 1
+          maxLength: 100
+        affiliate_percentage:
+          description: >-
+            affiliate percentage
+          type: string
+          minimum: 1
+          maximum: 100
+        redirect_url:
+          description: >-
+            URL to redirect users to after redeeming Reward Code
+            (query params will include verification code and
+            additional redemption data)
+          type: string
+          minLength: 1
+          maxLength: 255
+        label:
+          description: >-
+            the Vendor assigned label for this batch of Reward Codes
+          type: string
+          minLength: 1
+          maxLength: 150
 
     Redeem:
       type: object
