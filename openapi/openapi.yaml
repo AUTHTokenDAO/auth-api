@@ -74,7 +74,7 @@ paths:
         be added in the future. The actual Reward Code is SAFE to return in this
         case since it has been redeemed already.**
       tags:
-        - Codes
+	- Rewards
       parameters: []
 
   /codes/{code}:
@@ -107,7 +107,7 @@ paths:
         case since it has been redeemed already. This is a public API, so no private details
         to the vendor associated with the code are exposed.
       tags:
-        - Codes
+	- Rewards
       parameters:
         - name: code
           in: path
@@ -131,7 +131,7 @@ paths:
         Extended detail on a Reward Code. This is only available when
         authenticated as the Vendor who minted the code originally.
       tags:
-        - Vendor Management
+        - Reward Management
       parameters:
         - name: code
           in: path
@@ -148,7 +148,7 @@ paths:
         "200":
           description: successful operation
         "400":
-          description: Invalid Code
+          description: Failed
           content:
             application/json:
               example:
@@ -158,7 +158,7 @@ paths:
       operationId: update_code_details
       description: Update extended detail on a Reward Code. TBD
       tags:
-        - Vendor Management
+        - Reward Management
       parameters:
         - name: code
           in: path
@@ -205,8 +205,7 @@ paths:
         Reward Units assigned to each code (per drop) as well as the duration of
         the rewards.
       tags:
-        - Vendor Management
-        - Reward Batches
+	- Reward Management
       parameters: []
 
   /purchases/{order_id}:
@@ -232,8 +231,7 @@ paths:
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
         total, units, duration).
       tags:
-        - Vendor Management
-        - Reward Batches
+	- Reward Management
       parameters:
         - name: order_id
           in: path
@@ -422,12 +420,14 @@ paths:
       parameters: []
   
 tags:
-  - name: Vendor Management
-    description: APIs which require the Vendor to authenticate
-  - name: Codes
-    description: Interacting with Reward Codes
+  - name: Rewards
+    description: Public facing blockchain APIs for interacting with Reward Codes
+  - name: Rewards Management
+    description: Vendor management of Rewards
   - name: Vendors
     description: Vendor Management
+  - name: Vendor Management
+    description: Management of Vendors
   - name: Oracle
     description: Oracle prices for the AUTH Token
   - name: Stats
@@ -514,12 +514,13 @@ components:
 x-tagGroups:
   - name: Blockchain
     tags:
-      - Codes
+      - Rewards
       - Vendors
       - Stats
       
   - name: Management
     tags:
+      - Reward Management
       - Vendor Management
 
   - name: Oracle
