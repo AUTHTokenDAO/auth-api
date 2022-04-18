@@ -59,7 +59,7 @@ paths:
                     wallet: XXXXXX
                   - {}
         "405":
-          description: Invalid input
+          description: Failed
       summary: Redeem Code
       operationId: redeem_code
       description: >-
@@ -95,7 +95,7 @@ paths:
                       redeemed_utc: "2022-02-29T04:20:00Z"
                       wallet: XXXXXX
         "400":
-          description: Invalid Code
+          description: Failed
       summary: Code Redemption Status
       operationId: code_statu
       description: >-
@@ -289,7 +289,14 @@ paths:
         If a cursor field is present in the response, more results are available.
       tags:
         - vendors
-      parameters: []
+      parameters:
+          - name: cursor
+            in: query
+            description: Returned from an initial query, allowing client to fetch more results
+            required: false
+            schema:
+              type: string
+  
 
     post:
       responses:
@@ -345,8 +352,6 @@ paths:
           description: Failed
         "200":
           description: OK
-          headers: {}
-          content: {}
       summary: Current and Historical Oracle Prices for AUTH
       operationId: historical_auth_prices
       description: >-
@@ -434,6 +439,11 @@ components:
           type: integer
           minimum: 1
           maximum: 260
+      required:
+        - label
+        - total
+        - units
+        - duration
 
     Redeem:
       type: object
