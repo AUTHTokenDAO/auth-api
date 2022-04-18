@@ -3,6 +3,8 @@ info:
   title: AUTH Token API
   version: 1.0.0
   description: >-
+    ## Overview
+    
     This API is documented in **OpenAPI format** and describes how to access AUTH Token data including both public
     data on the blockchain, as well as management API for authenticated vendors and apps.
 
