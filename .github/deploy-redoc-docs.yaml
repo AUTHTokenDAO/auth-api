@@ -19,5 +19,5 @@ jobs:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_dir: .
         force_orphan: true
-        exclude_assets: '.github,openapi,.redocly.yaml,LICENSE,README.md'
+        exclude_assets: '.github,openapi,.redocly.yaml,LICENSE,README.md,index.html'
         cname: docs.api.jizt.it
