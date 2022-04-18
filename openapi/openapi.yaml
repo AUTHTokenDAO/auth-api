@@ -6,8 +6,8 @@ info:
     This API is documented in **OpenAPI format** and describes how to access AUTH Token data including both public
     data on the blockchain, as well as management API for authenticated vendors and apps.
 
-    WARNING: This API is an early draft and in active development. We are changing things
-    rapidly. Once we are ready to release a stable version of this API we will notify app developers on Discord.
+    **WARNING: This API is an early draft and in active development. We are changing things
+    rapidly. Once we are ready to release a stable version of this API we will notify app developers on Discord.**
 
     ## General
 
@@ -63,15 +63,16 @@ paths:
       summary: Redeem Code
       operationId: redeem_code
       description: >-
-        NOTE: This may not be exposed to users, and instead the only redemption
-        path is via theauthtoken.com/redeem portal to allow for tighter Vendor
-        integration, including redirecting to a vendor specified URL.
+        Permanently redeem a Reward Code by associating it with a Solana wallet.
 
-        Permanently redeem a Reward Code and associate it with a reward wallet.
-        WARNING: This is irreversable. The response includes a list of
+        **NOTE: This may not be exposed to users, and instead the only redemption
+        path is via theauthtoken.com/redeem portal to allow for tighter Vendor
+        integration, including redirecting to a vendor specified URL.**
+
+        **WARNING: This is irreversable. The response includes a list of
         redeemed codes (typically just one) so that multiple code redemption can
         be added in the future. The actual Reward Code is SAFE to return in this
-        case since it has been redeemed already.
+        case since it has been redeemed already.**
       tags:
         - codes
       parameters: []
