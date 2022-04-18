@@ -74,7 +74,7 @@ paths:
         be added in the future. The actual Reward Code is SAFE to return in this
         case since it has been redeemed already.**
       tags:
-	- Rewards
+        - Rewards
       parameters: []
 
   /codes/{code}:
@@ -107,7 +107,7 @@ paths:
         case since it has been redeemed already. This is a public API, so no private details
         to the vendor associated with the code are exposed.
       tags:
-	- Rewards
+        - Rewards
       parameters:
         - name: code
           in: path
@@ -205,7 +205,7 @@ paths:
         Reward Units assigned to each code (per drop) as well as the duration of
         the rewards.
       tags:
-	- Reward Management
+        - Reward Management
       parameters: []
 
   /purchases/{order_id}:
@@ -231,7 +231,7 @@ paths:
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
         total, units, duration).
       tags:
-	- Reward Management
+        - Reward Management
       parameters:
         - name: order_id
           in: path
