@@ -195,7 +195,7 @@ paths:
                   - code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
                     verification: 1f69ec4d-72f8-4d41-bb67-aa67ac476b45
                   - {}
-      summary: Mint Reward Code Batch
+      summary: Mint Reward Codes
       operationId: mint_reward_codes
       description: >-
         Mint a new batch of Reward Codes for a Vendor (API request must be authenticated as
