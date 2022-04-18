@@ -333,7 +333,7 @@ paths:
                 status: active
       summary: Get Vendor Details
       operationId: vendors
-      description: "Data about a given Vendor"
+      description: "Details about a Vendor"
       tags:
         - vendors
       parameters:
