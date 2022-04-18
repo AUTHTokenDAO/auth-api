@@ -124,7 +124,7 @@ paths:
         "200":
           description: OK
         "400":
-          description: Invalid Code
+          description: Failed
       summary: Extended Reward Code Details
       operationId: code_details
       description: >-
@@ -144,9 +144,15 @@ paths:
 
   /codes/{code}/extended:
     put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RewardUpdate"
+
       responses:
         "200":
-          description: successful operation
+          description: OK
         "400":
           description: Failed
           content:
@@ -156,7 +162,7 @@ paths:
                 message: "Invalid Code"
       summary: Update Reward Code Details
       operationId: update_code_details
-      description: Update extended detail on a Reward Code. TBD
+      description: Update extended details related to a Reward Code
       tags:
         - Reward Management
       parameters:
@@ -512,6 +518,10 @@ components:
           type: string
           minLength: 1
           maxLength: 255
+
+    RewardUpdate:
+      type: object
+      properties:
         affiliate_wallet:
           description: >-
             affiliate wallet
