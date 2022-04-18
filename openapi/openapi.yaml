@@ -131,7 +131,7 @@ paths:
         Extended detail on a Reward Code. This is only available when
         authenticated as the Vendor who minted the code originally.
       tags:
-        - Vendor Authentication
+        - Vendor Management
       parameters:
         - name: code
           in: path
@@ -158,7 +158,7 @@ paths:
       operationId: update_code_details
       description: Update extended detail on a Reward Code. TBD
       tags:
-        - Vendor Authentication
+        - Vendor Management
       parameters:
         - name: code
           in: path
@@ -205,7 +205,7 @@ paths:
         Reward Units assigned to each code (per drop) as well as the duration of
         the rewards.
       tags:
-        - Vendor Authentication
+        - Vendor Management
       parameters: []
 
   /purchases/{order_id}:
@@ -231,7 +231,7 @@ paths:
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
         total, units, duration).
       tags:
-        - Vendor Authentication
+        - Vendor Management
       parameters:
         - name: order_id
           in: path
@@ -264,7 +264,7 @@ paths:
 
         + label (string) - change the vendor assigned label for this batch of codes
       tags:
-        - Vendor Authentication
+        - Vendor Management
       parameters: []
 
   /vendors:
@@ -312,7 +312,7 @@ paths:
         NOTE: This API is not necessary for now as all Vendors go through an approval process and are manually added to the internal database.
         Requires the onboarding key in order to call this API (limited to AUTH Management Committee members)
       tags:
-        - Vendor Authentication
+        - Vendor Management
       parameters: []
 
   /vendors/{vendor_slug}:
@@ -421,8 +421,8 @@ paths:
       parameters: []
   
 tags:
-  - name: Vendor Authentication
-    description: APIs that require Vendor Authentication
+  - name: Vendor Management
+    description: APIs that require Vendor Management
   - name: codes
     description: API for interacting with Reward Codes
   - name: Vendors
@@ -516,9 +516,11 @@ x-tagGroups:
       - Codes
       - Vendors
       - Stats
-  - name: Vendor Management
+      
+  - name: Management
     tags:
-      - Vendor Authentication
+      - Vendor Management
+
   - name: Oracle
     tags:
       - Price
