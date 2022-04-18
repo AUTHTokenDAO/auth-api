@@ -377,7 +377,7 @@ paths:
           content:
             application/json:
               example:
-                prices:
+                data:
                   - price: 0.0001
                     currency: "USD"
                     block_effective: 1
