@@ -61,19 +61,39 @@ paths:
         redeemed codes (typically just one) so that multiple code redemption can
         be added in the future. The actual Reward Code is SAFE to return in this
         case since it has been redeemed already.
-
-        + code (string, required) - Reward Code to redeem
-
-        + address (string, required) - Solana wallet address this code will be
-        redeemed to
-
-        + email (string) - optional email for entity redeeming code
-
-        + vendorSerial (string) - optional vendor product serial number to
-        associate to this Reward Code
       tags:
         - codes
-      parameters: []
+      parameters:
+        - name: code
+          in: query
+          description: >-
+            Reward Code to redeem
+          required: true
+          schema:
+            type: string
+        - name: wallet
+          in: query
+          description: >-
+            Solana wallet address this code will be
+            redeemed to
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: >-
+            optional email for individual redeeming code
+          required: false
+          schema:
+            type: string
+        - name: vendorSerial
+          in: query
+          description: >-
+            optional vendor defined product serial number to associate with this Reward Code
+          required: false
+          schema:
+            type: string
+    
       requestBody:
         content:
           application/json:

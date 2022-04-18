@@ -9,5 +9,4 @@ npx redoc-cli bundle openapi/openapi.yaml
 mv redoc-static.html docs/index.html
 
 # add the favicon to 7th row of the file
-sed -i '7 i \ \ <link rel="icon" type="image/png" href="favicon.ico"/>' docs/index.html
-
+#sed -i '7 i \ \ <link rel="icon" type="image/png" href="favicon.ico"/>' docs/index.html
