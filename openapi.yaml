@@ -66,7 +66,7 @@ paths:
         + vendorSerial (string) - optional vendor product serial number to
         associate to this Reward Code
       tags:
-        - Codes
+        - codes
       parameters: []
       requestBody:
         content:
@@ -114,7 +114,7 @@ paths:
         case since it has been redeemed already. This is a public API, so no private details
         to the vendor associated with the code are exposed.
       tags:
-        - Codes
+        - codes
       parameters:
         - name: code
           in: path
@@ -137,7 +137,7 @@ paths:
         Extended detail on a Reward Code. This is only available when
         authenticated as the Vendor who minted the code originally.
       tags:
-        - Codes
+        - vendors
       parameters:
         - name: code
           in: path
@@ -148,7 +148,7 @@ paths:
           schema:
             type: string
   /codes/{code}/extended:
-    post:
+    put:
       responses:
         "200":
           description: successful operation
@@ -163,7 +163,7 @@ paths:
       operationId: update_code_details
       description: Update extended detail on a Reward Code. TBD
       tags:
-        - Codes
+        - vendors
       parameters:
         - name: code
           in: path
@@ -214,7 +214,7 @@ paths:
         Reward Units assigned to each code (per drop) as well as the duration of
         the rewards.
       tags:
-        - Codes
+        - vendors
       parameters: []
   /purchases/{order_id}:
     get:
@@ -239,7 +239,7 @@ paths:
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
         total, units, duration).
       tags:
-        - Codes
+        - vendors
       parameters:
         - name: order_id
           in: path
@@ -295,7 +295,7 @@ paths:
 
         If a cursor field is present in the response, more results are available.
       tags:
-        - Vendors
+        - vendors
       parameters: []
     post:
       responses:
@@ -308,7 +308,7 @@ paths:
       description: >-
         Register a new Vendor, including the intial Vendor onboarding fee or the annual AUTH burn fee. NOTE: This API is not necessary for now as all Vendors go through an approval process and are manually added to the internal database.
       tags:
-        - Vendors
+        - vendors
       parameters: []
   /vendors/{vendor_slug}:
     get:
@@ -333,7 +333,7 @@ paths:
       operationId: vendors
       description: "Data about a given Vendor"
       tags:
-        - Vendors
+        - vendors
       parameters:
         - name: vendor_slug
           in: path
@@ -359,7 +359,7 @@ paths:
 
         + cursor (optional) (string) Returned from an initial query, allowing client to fetch more results
       tags:
-        - Oracle
+        - oracle
       parameters: []
   /stats:
     get:
@@ -377,18 +377,21 @@ paths:
       operationId: stats
       description: ""
       tags:
-        - Stats
+        - stats
       parameters: []
 tags:
-  - name: Codes
+  - name: codes
     description: Reward Codes
-  - name: Vendors
-    description: AUTH Vendors
-  - name: Oracle
+  - name: vendors
+    description: Vendor Management
+  - name: oracle
     description: Oracle prices for the AUTH Token
-  - name: Stats
+  - name: stats
     description: Blockchain Stats
-
+  - name: code_model
+    x-displayName: Reward Code Model
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/Code" />
 components:
   schemas:
     Code:
@@ -405,3 +408,15 @@ components:
             - minted
             - redeemed
             - expired
+
+x-tagGroups:
+  - name: General
+    tags:
+      - codes
+      - stats
+  - name: Vendor Management
+    tags:
+      - vendor
+  - name: Oracle
+    tags:
+      - oracle
