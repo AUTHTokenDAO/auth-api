@@ -331,7 +331,7 @@ paths:
                 reward_catalog_url: https://ultimatekicksforyou.com/rewards
                 created_utc: "2021-12-25T15:12:55Z"
                 status: active
-      summary: Vendors
+      summary: Get Vendor Details
       operationId: vendors
       description: "Data about a given Vendor"
       tags:
