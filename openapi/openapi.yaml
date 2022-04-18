@@ -97,8 +97,8 @@ paths:
                       wallet: XXXXXX
         "400":
           description: Failed
-      summary: Code Redemption Status
-      operationId: code_statu
+      summary: Redemption Status
+      operationId: code_status
       description: >-
         Check if a Reward Code has been redeemed (either with verification code
         or reward code). Prefer using Verification Codes wherever possible to
