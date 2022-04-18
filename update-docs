@@ -4,6 +4,7 @@
 
 docker run -it --rm -v $PWD:/doc quay.io/bukalapak/snowboard html -o docs API.apib
 
+# not sure how to force relative paths with Snowbird, so manually adjust refs
 perl -pi -e's|/index.js|index.js|g' docs/index.html
 perl -pi -e's|/index.css|index.css|g' docs/index.html
 
