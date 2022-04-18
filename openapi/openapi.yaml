@@ -131,7 +131,6 @@ paths:
         Extended detail on a Reward Code. This is only available when
         authenticated as the Vendor who minted the code originally.
       tags:
-        - vendors
         - Vendor Authentication
       parameters:
         - name: code
@@ -159,7 +158,6 @@ paths:
       operationId: update_code_details
       description: Update extended detail on a Reward Code. TBD
       tags:
-        - vendors
         - Vendor Authentication
       parameters:
         - name: code
@@ -207,7 +205,6 @@ paths:
         Reward Units assigned to each code (per drop) as well as the duration of
         the rewards.
       tags:
-        - vendors
         - Vendor Authentication
       parameters: []
 
@@ -234,7 +231,6 @@ paths:
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
         total, units, duration).
       tags:
-        - vendors
         - Vendor Authentication
       parameters:
         - name: order_id
@@ -293,7 +289,7 @@ paths:
 
         If a cursor field is present in the response, more results are available.
       tags:
-        - vendors
+        - Vendors
       parameters:
           - name: cursor
             in: query
@@ -342,7 +338,7 @@ paths:
       operationId: vendors
       description: "Details about a Vendor"
       tags:
-        - vendors
+        - Vendors
       parameters:
         - name: vendor_slug
           in: path
@@ -371,7 +367,7 @@ paths:
       description: >-
         Current Oracle Price for AUTH and the block the price took effect.
       tags:
-        - oracle
+        - Price
       parameters: []
               
   /oracle/prices:
@@ -395,7 +391,7 @@ paths:
         The current and historical Oracle Prices for AUTH including the block
         that they took effect. Pagination by cursor.
       tags:
-        - oracle
+        - Price
       parameters:
         - name: cursor
           in: query
@@ -522,8 +518,5 @@ x-tagGroups:
       - stats
   - name: Vendors
     tags:
+      - Vendors
       - Vendor Authentication
-      - vendors
-  - name: Oracle
-    tags:
-      - oracle
