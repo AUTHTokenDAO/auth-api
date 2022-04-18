@@ -373,7 +373,7 @@ paths:
                 currency: "USD"
                 block_effective: 1
                 time_effective: 2022-04-01T00:00:00.00Z
-      summary: Current AUTH Price
+      summary: Current Price
       operationId: oracle_price
       description: >-
         Current Oracle Price for AUTH and the block the price took effect.
@@ -396,7 +396,7 @@ paths:
                     currency: "USD"
                     block_effective: 1
                     time_effective: 2022-04-01T00:00:00.00Z
-      summary: Historical AUTH Prices
+      summary: Historical Prices
       operationId: historical_oracle_prices
       description: >-
         The current and historical Oracle Prices for AUTH including the block
