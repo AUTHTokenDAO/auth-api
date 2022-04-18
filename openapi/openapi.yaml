@@ -255,7 +255,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Mint"
+              $ref: "#/components/schemas/BatchUpdate"
 
       responses:
         "400":
