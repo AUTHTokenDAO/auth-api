@@ -132,6 +132,7 @@ paths:
         authenticated as the Vendor who minted the code originally.
       tags:
         - vendors
+        - Vendor Authentication
       parameters:
         - name: code
           in: path
@@ -159,6 +160,7 @@ paths:
       description: Update extended detail on a Reward Code. TBD
       tags:
         - vendors
+        - Vendor Authentication
       parameters:
         - name: code
           in: path
@@ -206,6 +208,7 @@ paths:
         the rewards.
       tags:
         - vendors
+        - Vendor Authentication
       parameters: []
 
   /purchases/{order_id}:
@@ -232,6 +235,7 @@ paths:
         total, units, duration).
       tags:
         - vendors
+        - Vendor Authentication
       parameters:
         - name: order_id
           in: path
@@ -264,7 +268,7 @@ paths:
 
         + label (string) - change the vendor assigned label for this batch of codes
       tags:
-        - Codes
+        - Vendor Authentication
       parameters: []
 
   /vendors:
@@ -308,9 +312,11 @@ paths:
       summary: Register Vendor
       operationId: register_vendor
       description: >-
-        Register a new Vendor, including the intial Vendor onboarding fee or the annual AUTH burn fee. NOTE: This API is not necessary for now as all Vendors go through an approval process and are manually added to the internal database.
+        Register a new Vendor, including the intial Vendor onboarding fee or the annual AUTH burn fee. 
+        NOTE: This API is not necessary for now as all Vendors go through an approval process and are manually added to the internal database.
+        Requires the onboarding key in order to call this API (limited to AUTH Management Committee members)
       tags:
-        - vendors
+        - Vendor Authentication
       parameters: []
 
   /vendors/{vendor_slug}:
@@ -417,7 +423,10 @@ paths:
       tags:
         - stats
       parameters: []
+  
 tags:
+  - name: Vendor Authentication
+    description: APIs that require Vendor Authentication
   - name: codes
     description: API for interacting with Reward Codes
   - name: vendors
@@ -430,6 +439,8 @@ tags:
     x-displayName: Reward Code Model
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/Code" />
+
+
 components:
   schemas:
     Code:
