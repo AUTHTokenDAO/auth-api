@@ -205,7 +205,7 @@ paths:
         Reward Units assigned to each code (per drop) as well as the duration of
         the rewards.
       tags:
-        - Reward Management
+        - Batch Management
       parameters: []
 
   /batch/{batch_id}:
@@ -231,7 +231,7 @@ paths:
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
         total, units, duration).
       tags:
-        - Reward Management
+        - Batch Management
       parameters:
         - name: batch_id
           in: path
@@ -423,7 +423,9 @@ tags:
   - name: Rewards
     description: Public facing blockchain APIs for interacting with Reward Codes
   - name: Rewards Management
-    description: Vendor management of Rewards
+    description: Vendor management of Reward Codes
+  - name: Batch Management
+    description: Vendor management of Batches of Reward Codes
   - name: Vendors
     description: Vendor Management
   - name: Vendor Management
@@ -521,6 +523,7 @@ x-tagGroups:
   - name: Management
     tags:
       - Reward Management
+      - Batch Management
       - Vendor Management
 
   - name: Oracle
