@@ -206,6 +206,7 @@ paths:
         the rewards.
       tags:
         - Vendor Management
+        - Reward Batches
       parameters: []
 
   /purchases/{order_id}:
@@ -232,6 +233,7 @@ paths:
         total, units, duration).
       tags:
         - Vendor Management
+        - Reward Batches
       parameters:
         - name: order_id
           in: path
