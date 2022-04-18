@@ -6,7 +6,9 @@ info:
     This API is documented in **OpenAPI format** and describes how to access AUTH Token data including both public
     data on the blockchain, as well as management API for authenticated vendors and apps.
 
-    **WARNING: This API is an early draft and in active development. We are changing things
+    ## WARNING 
+
+    **This API is an early draft and in active development. We are changing things
     rapidly. Once we are ready to release a stable version of this API we will notify app developers on Discord.**
 
     ## General
