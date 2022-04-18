@@ -27,7 +27,7 @@ paths:
   /codes/redeem:
     post:
       responses:
-        '201':
+        "201":
           description: Created
           headers: {}
           content:
@@ -50,7 +50,7 @@ paths:
         redeemed codes (typically just one) so that multiple code redemption can
         be added in the future. The actual Reward Code is SAFE to return in this
         case since it has been redeemed already.
- 
+
         + code (string, required) - Reward Code to redeem
 
         + address (string, required) - Solana wallet address this code will be
@@ -82,7 +82,7 @@ paths:
   /codes/{code}:
     get:
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content:
@@ -95,7 +95,7 @@ paths:
                     duration: 52
                     status: redeemed
                     redemption:
-                      redeemed_utc: '2022-02-29T04:20:00Z'
+                      redeemed_utc: "2022-02-29T04:20:00Z"
                       wallet: XXXXXX
       summary: Code Redemption Status
       operationId: Code Redemption Status
@@ -120,7 +120,7 @@ paths:
   /codes/{code}/detail:
     get:
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content: {}
@@ -144,7 +144,7 @@ paths:
   /codes/mint:
     post:
       responses:
-        '201':
+        "201":
           description: Created
           headers: {}
           content:
@@ -184,7 +184,7 @@ paths:
   /codes/batch/{purchaseOrderId}:
     get:
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content:
@@ -206,7 +206,7 @@ paths:
       parameters: []
     post:
       responses:
-        '201':
+        "201":
           description: Created
           headers: {}
           content:
@@ -230,7 +230,7 @@ paths:
   /vendors:
     get:
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content:
@@ -261,7 +261,7 @@ paths:
   /vendors/{vendor_slug}:
     get:
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content:
@@ -273,18 +273,18 @@ paths:
                 url: https://ultimatekicksforyou.com
                 twitter: ultimatekicksforyou
                 reward_catalog_url: https://ultimatekicksforyou.com/rewards
-                created_utc: '2021-12-25T15:12:55Z'
+                created_utc: "2021-12-25T15:12:55Z"
                 status: active
       summary: Vendors
       operationId: Vendors
-      description: ''
+      description: ""
       tags:
         - Vendors
       parameters: []
   /oracle/prices/current] [GET:
     get:
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content: {}
@@ -295,7 +295,7 @@ paths:
 
         The current and historical Oracle Prices for AUTH including the block
         that they took effect. Pagination by cursor.
-	
+
         + cursor (optional) (string) Returned from an initial query, allowing client to fetch more results
       tags:
         - Oracle
@@ -303,7 +303,7 @@ paths:
   /stats:
     get:
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content:
@@ -312,7 +312,7 @@ paths:
                 token_supply: 124112460.312515
       summary: View Stats
       operationId: View Stats
-      description: ''
+      description: ""
       tags:
         - Stats
       parameters: []
