@@ -26,6 +26,12 @@ info:
   contact:
     name: AUTH Token API Support
     url: https://discord.com/invite/P842Hxfz
+servers:
+  - url: 'https://{tenant}/api/v1'
+    variables:
+      tenant:
+        default: www
+        description: Your tenant id
 paths:
   /codes/redeem:
     post:
