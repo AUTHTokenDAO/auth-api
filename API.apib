@@ -1,0 +1,284 @@
+FORMAT: 1A
+
+# AUTH Token API
+
+Simple API to access AUTH Token data including both  public data recorded onto the blockchain
+as well as management APIs for vendors and apps to interact with Reward Codes. 
+
+::: warning
+#### <i class="fa fa-warning"></i> Caution
+This API is an early draft and in active development. We are changing things rapidly. Once we are ready to release a
+stable version of this API we will notify app developers on Discord.
+:::
+
+## General
+
+* all times are in the UTC timezone
+
+## Authentication
+
+Most APIs are read-only and do not require authentication. Any API used for Reward Code management uses
+User OAuth token, except for the initial authentication endpoints which are secured by OAuth Client key
+and secret.
+
+User OAuth tokens are sent via Authorization Bearer header:
+
+```http
+   Authorization: Bearer [USER_OAUTH_TOKEN]
+```
+
+
+
+## Group Codes
+
+### Reward Codes [/codes]
+
+Resources related to AUTH Reward Codes.
+
+### Redeem Code [POST /codes/redeem]
+
+NOTE: This may not be exposed to users, and instead the only redemption path is via theauthtoken.com/redeem portal to allow for tighter Vendor
+integration, including redirecting to a vendor specified URL.
+
+Permanently redeem a Reward Code and associate it with a reward wallet. WARNING: This is irreversable. The response includes a list of
+redeemed codes (typically just one) so that multiple code redemption can be added in the future. The actual Reward Code is SAFE to return in this case since it
+has been redeemed already.
+
++ code (string, required) - Reward Code to redeem
++ address (string, required) - Solana wallet address this code will be redeemed to
++ email (string) - optional email for entity redeeming code
++ vendorSerial (string) - optional vendor product serial number to associate to this Reward Code
+
++ Request (application/json)
+
+        {
+            "code": "8af4ed0f-ee0d-477f-8c5a-d5247528b74e",
+            "address": "XXXX",
+            "email": "me@futurelambo.com"
+        }
+
++ Response 201 (application/json)
+    + Body
+        {
+            "redeemed": [
+              { "code": "8af4ed0f-ee0d-477f-8c5a-d5247528b74e",
+                "verification": "1f69ec4d-72f8-4d41-bb67-aa67ac476b45",
+                "wallet": "XXXXXX"
+              },
+              {}
+            ]
+        }
+
+
+### Code Redemption Status [GET /codes/{code}]
+
+Check if a Reward Code has been redeemed (either with verification code or reward code). Prefer using Verification Codes wherever possible to avoid potentially
+leaking a Reward Code in logs/etc that could be then redeemed by an unscrupulous middleman. The actual Reward Code is SAFE to return in this case since it
+has been redeemed already. This is a public API, so no private details to the vendor associated with the code are exposed.
+
++ Parameters
+    + code (string, required) - check using the Verification Code (or the actual Reward Code) if a Reward has been redeemed
+
++ Response 200 (application/json)
+        {
+          "codes": [
+            { "verification": "1f69ec4d-72f8-4d41-bb67-aa67ac476b45",
+              "vendor_slug": "ultimatekicks",
+              "units": 10,
+              "duration": 52,
+              "status": "redeemed",
+
+              "redemption": {
+                "redeemed_utc": "2022-02-29T04:20:00Z",
+                "wallet": "XXXXXX"
+              }
+            }
+          ]
+        }
+
+
+### Code Details [GET /codes/{code}/detail]
+
+Extended detail on a Reward Code. This is only available when authenticated as the Vendor who minted the code originally.
+
++ Response 200 (application/json)
+        {
+          "codes": [
+            { "verification": "1f69ec4d-72f8-4d41-bb67-aa67ac476b45",
+              "units": 10,
+              "duration": 52,
+              "status": "redeemed",
+
+              "minted": {
+                "label": "2022_ST_PATRICK_PROMO",
+                "minted_utc": "2022-01-12T15:12:55Z",
+              },
+              
+              "redemption": {
+                "redeemed_utc": "2022-02-29T04:20:00Z",
+                "wallet": "XXXXXX",
+                "email": "me@futurelambo.com"
+              },
+
+              "product": {
+                "vendor_order_id": "012415",
+                "vendor_serial_number": "MAS120412MAX",
+                "assigned_utc": "2022-03-15T11:33:21Z"
+              }
+
+              "affiliate": {
+                "wallet": "ZZZZZZ",
+                "percentage": 0.01
+                "duration": 52
+              }
+            }
+          ]
+        }
+
+
+### Update Details [POST /codes/{code}/extended]
+
+Update extended detail on a Reward Code. TBD
+
+### Mint Reward Codes [POST /codes/mint]
+
+Mint new Reward Codes for a Vendor (API request must be authenticated as the vendor and the Reward Codes will be assigned to that Vendor).
+
++ label (string, required) - optional vendor supplied label for this batch of Reward Codes (private and only visible to the vendor)
++ total (int, required) - the number of Reward Codes that should be minted
++ units (int, required) - the number of Reward Units for each Reward Code
++ duration (int, required) - the number of weeks the Reward Codes will be active for once redeemed (1 to 260 weeks)
+
+NOTE: The cost to the Vendor to mint each Reward Code varies both on the Reward Units assigned to each code (per drop) as well as the duration of the rewards.
+
++ Response 201 (application/json)
+        {
+          "label": "2022_ST_PATRICK_PROMO",
+          "vendor_slug": "ultimatekicks",
+          "units": 10,
+          "duration": 52,
+          "total_codes": 1000,
+          "codes": [
+            { "code": "8af4ed0f-ee0d-477f-8c5a-d5247528b74e",
+              "verification": "1f69ec4d-72f8-4d41-bb67-aa67ac476b45" },
+            {}
+          ]
+        }
+
+
+### Stats Reward Code Batch [GET /codes/batch/{purchaseOrderId}]
+
+Vendor view into the stats for a batch of Reward Codes (number redeemed, total, units, duration).
+
++ Response 200 (application/json)
+      {
+          "label": "2022_ST_PATRICK_PROMO",
+          "vendor_slug": "ultimatekicks",
+          "units": 10,
+          "duration": 52,
+          "total_codes": 1000,
+          "total_redeemed": 312
+      }
+
+### Manage Reward Code Batch [POST /codes/batch/{purchaseOrderId}]
+
+Ability to Manage a batch of Reward Codes by the Vendor. Includes assigning various attributes to the batch (after minted). Only the original purchasing Vendor
+of the batch can make modifications.
+
++ redirectURL (string) - URL that users should be redirected to after redeeming a Reward Code (query params will include verification code and additional redemption data)
++ label (string) - change the vendor assigned label for this batch of codes
+
++ Response 201 (application/json)
+        {
+        }
+
+## Group Vendors
+
+### Vendors [GET /vendors]
+
+List known vendors that support AUTH as registered on the blockchain and statistics on their total Reward Codes (issued, redeemed, etc).
+If a cursor field is present in the response, more results are available.
+
++ Response 200 (application/json)
+      {
+        "data": [
+          {
+          }
+        ],
+        "cursor": "E5Mmsd23aP23xYU0"
+      }
+
+
+### Vendors [GET /vendors/{vendor_slug}]
+
++ Response 200 (application/json)
+      {
+        "vendor_id": "909a550a-3573-4c89-93c7-1b258abc966c",
+        "vendor_slug": "ultimatekicks",
+        "brand_name": "Ultimate Kicks Shoes",
+        "url": "https://ultimatekicksforyou.com",
+        "twitter": "ultimatekicksforyou",
+        "reward_catalog_url": "https://ultimatekicksforyou.com/rewards",
+        "created_utc": "2021-12-25T15:12:55Z",
+        "status": "active"
+      }
+
+### Register Vendor [POST /vendors]
+
+Register a new Vendor, including the intial Vendor onboarding fee or the annual AUTH burn fee. NOTE: This API is not necessary for
+now as all Vendors go through an approval process and are manually added to the internal database.
+
+
+
+
+## Group Oracle
+
+Get or publish Oracle prices for the AUTH Token.
+
+## Current AUTH Price [/oracle/prices/current] [GET]
+
+The current Oracle Price for AUTH and the block which it took effect.
+
++ Response 200 (application/json)
+      {
+        "price": 0.001,
+        "block": 9481,
+        "block_utc": "2022-02-29T04:20:00Z"
+      }
+
+## Historical AUTH Prices [/oracle/prices] [GET]
+
+Current and Historical Oracle Prices for AUTH
+The current and historical Oracle Prices for AUTH including the block that they took effect. Pagination by cursor.
+
+cursor (optional) (string) Returned from an initial query, allowing client to fetch more results
+
++ Response 200 (application/json)
+      { 
+        "data": [
+          {
+            "price": 0.001,
+            "block": 9481,
+            "block_utc": "2022-02-29T04:20:00Z"
+          },
+        ],
+        "cursor": "E5Mmsd23aP23xYU0"
+      }
+
+
+
+
+## Group Stats
+
+Blockchain Stats
+
+## Stats [/stats]
+
+Retrieve basic stats for the blockchain such as total token supply.
+
+### View Stats [GET]
+
++ Response 200 (application/json)
+        {
+            "token_supply": 124112460.312515
+        }

@@ -1,0 +1,47 @@
+{
+  "title": "Code Details",
+  "description": "Extended detail on a Reward Code. This is only available when authenticated as the Vendor who minted the code originally.",
+  "permalink": "t~codes~reward~codes~get~codes~code~detail",
+  "uuid": "IkiAWVM0vtAO1mO9sBkMd",
+  "method": "GET",
+  "path": "/codes/{code}/detail",
+  "pathTemplate": "/codes/{code}/detail",
+  "parameters": [],
+  "meta": {
+    "resource": {
+      "title": "Reward Codes",
+      "permalink": "r~codes~reward~codes"
+    },
+    "group": {
+      "title": "Codes",
+      "permalink": "g~codes"
+    }
+  },
+  "transactions": [
+    {
+      "request": {
+        "title": "",
+        "description": "",
+        "method": "GET",
+        "headers": []
+      },
+      "response": {
+        "title": "",
+        "description": "",
+        "statusCode": "200",
+        "contentType": "application/json",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "example": "application/json",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "body": "    {\n      \"codes\": [\n        { \"verification\": \"1f69ec4d-72f8-4d41-bb67-aa67ac476b45\",\n          \"units\": 10,\n          \"duration\": 52,\n          \"status\": \"redeemed\",\n\n      \"minted\": {\n        \"label\": \"2022_ST_PATRICK_PROMO\",\n        \"minted_utc\": \"2022-01-12T15:12:55Z\",\n      },\n\n      \"redemption\": {\n        \"redeemed_utc\": \"2022-02-29T04:20:00Z\",\n        \"wallet\": \"XXXXXX\",\n        \"email\": \"me@futurelambo.com\"\n      },\n\n      \"product\": {\n        \"vendor_order_id\": \"012415\",\n        \"vendor_serial_number\": \"MAS120412MAX\",\n        \"assigned_utc\": \"2022-03-15T11:33:21Z\"\n      }\n\n      \"affiliate\": {\n        \"wallet\": \"ZZZZZZ\",\n        \"percentage\": 0.01\n        \"duration\": 52\n      }\n    }\n  ]\n}\n"
+      }
+    }
+  ]
+}
