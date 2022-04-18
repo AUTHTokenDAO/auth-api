@@ -168,8 +168,8 @@ paths:
           required: true
           schema:
             type: string
-
-  /codes/mint:
+   
+  /batch:
     post:
       requestBody:
         content:
@@ -195,10 +195,10 @@ paths:
                   - code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
                     verification: 1f69ec4d-72f8-4d41-bb67-aa67ac476b45
                   - {}
-      summary: Mint Reward Codes
+      summary: Mint Reward Code Batch
       operationId: mint_reward_codes
       description: >-
-        Mint new Reward Codes for a Vendor (API request must be authenticated as
+        Mint a new batch of Reward Codes for a Vendor (API request must be authenticated as
         the vendor and the Reward Codes will be assigned to that Vendor).
 
         NOTE: The cost to the Vendor to mint each Reward Code varies both on the
@@ -208,7 +208,7 @@ paths:
         - Reward Management
       parameters: []
 
-  /purchases/{order_id}:
+  /batch/{batch_id}:
     get:
       responses:
         "200":
@@ -233,10 +233,10 @@ paths:
       tags:
         - Reward Management
       parameters:
-        - name: order_id
+        - name: batch_id
           in: path
           description: >-
-            the purchase_order_id for the batch
+            the batch_id (aka purchase_order_id) for the batch of Reward Codes
           required: true
           schema:
             type: string
@@ -246,7 +246,7 @@ paths:
         "400":
           description: Failed
         "201":
-          description: Created
+          description: Updated
           headers: {}
           content:
             application/json:
