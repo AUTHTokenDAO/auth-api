@@ -125,7 +125,7 @@ paths:
           description: OK
         "400":
           description: Failed
-      summary: Extended Reward Code Details
+      summary: Reward Code Details
       operationId: code_details
       description: >-
         Extended detail on a Reward Code. This is only available when
@@ -522,6 +522,18 @@ components:
     RewardUpdate:
       type: object
       properties:
+        vendor_serial_number:
+          description: >-
+            the Vendor defined product serial number associated with this Reward Code
+          type: string
+          minLength: 1
+          maxLength: 150
+        vendor_order_number:
+          description: >-
+            the Vendor defined order number associated with this Reward Code
+          type: string
+          minLength: 1
+          maxLength: 50
         affiliate_wallet:
           description: >-
             affiliate wallet
