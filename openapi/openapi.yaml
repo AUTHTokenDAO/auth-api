@@ -100,10 +100,10 @@ paths:
       summary: Redemption Status
       operationId: code_status
       description: >-
-        Check if a Reward Code has been redeemed (either with verification code
-        or reward code). Prefer using Verification Codes wherever possible to
+        Check if a Reward Code has been redeemed using either with verification code
+        or reward code (less secure). **Prefer using Verification Codes wherever possible to
         avoid potentially leaking a Reward Code in logs/etc that could be then redeemed by an
-        unscrupulous middleman. The actual Reward Code is SAFE to return in this
+        unscrupulous middleman.** The actual Reward Code is SAFE to return in this
         case since it has been redeemed already. This is a public API, so no private details
         to the vendor associated with the code are exposed.
       tags:
