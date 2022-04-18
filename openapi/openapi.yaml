@@ -417,7 +417,7 @@ paths:
       operationId: stats
       description: "Summary statistics for current AUTH environment including Blockchain and private data repositories."
       tags:
-        - stats
+        - Stats
       parameters: []
   
 tags:
@@ -425,17 +425,16 @@ tags:
     description: APIs that require Vendor Authentication
   - name: codes
     description: API for interacting with Reward Codes
-  - name: vendors
+  - name: Vendors
     description: Vendor Management
-  - name: oracle
+  - name: Oracle
     description: Oracle prices for the AUTH Token
-  - name: stats
+  - name: Stats
     description: Blockchain Stats
   - name: code_model
     x-displayName: Reward Code Model
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/Code" />
-
 
 components:
   schemas:
@@ -515,8 +514,11 @@ x-tagGroups:
   - name: General
     tags:
       - codes
-      - stats
+      - Stats
   - name: Vendors
     tags:
       - Vendors
       - Vendor Authentication
+  - name: Price
+    tags:
+      - Price
