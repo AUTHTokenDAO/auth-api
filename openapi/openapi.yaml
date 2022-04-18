@@ -135,8 +135,7 @@ paths:
         - name: code
           in: path
           description: >-
-            check using the Verification Code (or the actual Reward Code) if a
-            Reward has been redeemed
+            Verification Code (or Redemption Code) to get details for
           required: true
           schema:
             type: string
@@ -168,7 +167,7 @@ paths:
         - name: code
           in: path
           description: >-
-            the Verification Code (or the actual Redemption Code) of the Reward to update
+            Verification Code (or Redemption Code) to update
           required: true
           schema:
             type: string
