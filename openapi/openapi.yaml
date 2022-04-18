@@ -520,8 +520,9 @@ x-tagGroups:
     tags:
       - codes
       - stats
-  - name: Vendor Management
+  - name: Vendors
     tags:
+      - Vendor Authentication
       - vendors
   - name: Oracle
     tags:
