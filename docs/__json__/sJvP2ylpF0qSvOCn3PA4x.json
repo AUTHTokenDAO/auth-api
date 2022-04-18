@@ -1,0 +1,57 @@
+{
+  "title": "Code Redemption Status",
+  "description": "Check if a Reward Code has been redeemed (either with verification code or reward code). Prefer using Verification Codes wherever possible to avoid potentially\nleaking a Reward Code in logs/etc that could be then redeemed by an unscrupulous middleman. The actual Reward Code is SAFE to return in this case since it\nhas been redeemed already. This is a public API, so no private details to the vendor associated with the code are exposed.",
+  "permalink": "t~codes~reward~codes~get~codes~code",
+  "uuid": "sJvP2ylpF0qSvOCn3PA4x",
+  "method": "GET",
+  "path": "/codes/{code}",
+  "pathTemplate": "/codes/{code}",
+  "parameters": [
+    {
+      "location": "path",
+      "name": "code",
+      "description": "check using the Verification Code (or the actual Reward Code) if a Reward has been redeemed",
+      "required": true,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "meta": {
+    "resource": {
+      "title": "Reward Codes",
+      "permalink": "r~codes~reward~codes"
+    },
+    "group": {
+      "title": "Codes",
+      "permalink": "g~codes"
+    }
+  },
+  "transactions": [
+    {
+      "request": {
+        "title": "",
+        "description": "",
+        "method": "GET",
+        "headers": []
+      },
+      "response": {
+        "title": "",
+        "description": "",
+        "statusCode": "200",
+        "contentType": "application/json",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "example": "application/json",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "body": "    {\n      \"codes\": [\n        { \"verification\": \"1f69ec4d-72f8-4d41-bb67-aa67ac476b45\",\n          \"vendor_slug\": \"ultimatekicks\",\n          \"units\": 10,\n          \"duration\": 52,\n          \"status\": \"redeemed\",\n\n      \"redemption\": {\n        \"redeemed_utc\": \"2022-02-29T04:20:00Z\",\n        \"wallet\": \"XXXXXX\"\n      }\n    }\n  ]\n}\n"
+      }
+    }
+  ]
+}

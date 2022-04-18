@@ -3,4 +3,8 @@
 # Update generated docs using [Snowboard](https://github.com/bukalapak/snowboard):
 
 docker run -it --rm -v $PWD:/doc quay.io/bukalapak/snowboard html -o docs API.apib
+
+perl -pi -e's|/index.js|index.js|g' docs/index.html
+perl -pi -e's|/index.css|index.css|g' docs/index.html
+
 git add -v --all docs/* docs/*/*
