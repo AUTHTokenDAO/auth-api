@@ -410,9 +410,9 @@ paths:
             application/json:
               example:
                 token_supply: 124112460.312515
-      summary: Summary statistics for current AUTH environment
+      summary: Get Blockchain Stats 
       operationId: stats
-      description: "Get current statistics"
+      description: "Summary statistics for current AUTH environment including Blockchain and private data repositories."
       tags:
         - stats
       parameters: []
