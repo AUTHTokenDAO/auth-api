@@ -42,7 +42,7 @@ paths:
               $ref: "#/components/schemas/Redeem"
 
             example:
-              code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
+              redemption_code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
               wallet: XXXX
               email: me@futurelambo.com
 
@@ -54,8 +54,8 @@ paths:
             application/json:
               example:
                 redeemed:
-                  - code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
-                    verification: 1f69ec4d-72f8-4d41-bb67-aa67ac476b45
+                  - redemption_code: 8af4ed0f-ee0d-477f-8c5a-d5247528b74e
+                    verification_code: 1f69ec4d-72f8-4d41-bb67-aa67ac476b45
                     wallet: XXXXXX
                   - {}
         "405":
@@ -112,8 +112,7 @@ paths:
         - name: code
           in: path
           description: >-
-            check using the Verification Code (or the actual Reward Code) if a
-            Reward has been redeemed
+            check if a Reward has been redeemed using the Verification Code (or the Redemption Code)
           required: true
           schema:
             type: string
@@ -169,8 +168,7 @@ paths:
         - name: code
           in: path
           description: >-
-            check using the Verification Code (or the actual Reward Code) if a
-            Reward has been redeemed
+            the Verification Code (or the actual Redemption Code) of the Reward to update
           required: true
           schema:
             type: string
