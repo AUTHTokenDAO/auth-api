@@ -74,7 +74,7 @@ paths:
         be added in the future. The actual Reward Code is SAFE to return in this
         case since it has been redeemed already.**
       tags:
-        - codes
+        - Codes
       parameters: []
 
   /codes/{code}:
@@ -107,7 +107,7 @@ paths:
         case since it has been redeemed already. This is a public API, so no private details
         to the vendor associated with the code are exposed.
       tags:
-        - codes
+        - Codes
       parameters:
         - name: code
           in: path
@@ -511,14 +511,14 @@ components:
         - wallet
 
 x-tagGroups:
-  - name: General
+  - name: Blockchain
     tags:
-      - codes
-      - Stats
-  - name: Vendors
-    tags:
+      - Codes
       - Vendors
+      - Stats
+  - name: Vendor Management
+    tags:
       - Vendor Authentication
-  - name: Price
+  - name: Oracle
     tags:
       - Price
