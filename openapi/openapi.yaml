@@ -409,6 +409,7 @@ paths:
           content:
             application/json:
               example:
+                block: 531088
                 token_supply: 124112460.312515
       summary: Get Blockchain Stats 
       operationId: stats
