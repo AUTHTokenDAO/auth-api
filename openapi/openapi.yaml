@@ -281,7 +281,7 @@ paths:
                 data:
                   - {}
                 cursor: E5Mmsd23aP23xYU0
-      summary: Vendors
+      summary: List Vendors
       operationId: Vendors
       description: >-
         List known vendors that support AUTH as registered on the blockchain and
@@ -332,7 +332,7 @@ paths:
                 reward_catalog_url: https://ultimatekicksforyou.com/rewards
                 created_utc: "2021-12-25T15:12:55Z"
                 status: active
-      summary: Get Vendor Details
+      summary: Vendor Details
       operationId: vendors
       description: "Details about a Vendor"
       tags:
@@ -411,7 +411,7 @@ paths:
               example:
                 block: 531088
                 token_supply: 124112460.312515
-      summary: Get Blockchain Stats 
+      summary: Blockchain Stats 
       operationId: stats
       description: "Summary statistics for current AUTH environment including Blockchain and private data repositories."
       tags:
