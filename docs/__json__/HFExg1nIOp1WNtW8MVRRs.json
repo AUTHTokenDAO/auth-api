@@ -2,7 +2,7 @@
   "title": "Update Details",
   "description": "Update extended detail on a Reward Code. TBD",
   "permalink": "t~codes~reward~codes~undefined~codes~code~extended",
-  "uuid": "ssmndop_z906zLyZJDyHx",
+  "uuid": "HFExg1nIOp1WNtW8MVRRs",
   "path": "/codes/{code}/extended",
   "pathTemplate": "/codes/{code}/extended",
   "parameters": [],

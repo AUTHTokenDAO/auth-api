@@ -2,7 +2,7 @@
   "title": "Vendors",
   "description": "",
   "permalink": "t~vendors~vendors~get~vendors~vendor~slug",
-  "uuid": "nKzd6gL0wMWAajmQMnh-5",
+  "uuid": "7DBuwEJMSdWRtR72cNnoI",
   "method": "GET",
   "path": "/vendors/{vendor_slug}",
   "pathTemplate": "/vendors/{vendor_slug}",

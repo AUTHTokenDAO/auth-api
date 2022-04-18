@@ -2,7 +2,7 @@
   "title": "Stats Reward Code Batch",
   "description": "Vendor view into the stats for a batch of Reward Codes (number redeemed, total, units, duration).",
   "permalink": "t~codes~reward~codes~get~codes~batch~purchaseorderid",
-  "uuid": "EEeGRtLE6IhqwMrSI7wC7",
+  "uuid": "ghpO4a90OdfCOTPJDuiiK",
   "method": "GET",
   "path": "/codes/batch/{purchaseOrderId}",
   "pathTemplate": "/codes/batch/{purchaseOrderId}",

@@ -2,7 +2,7 @@
   "title": "Code Details",
   "description": "Extended detail on a Reward Code. This is only available when authenticated as the Vendor who minted the code originally.",
   "permalink": "t~codes~reward~codes~get~codes~code~detail",
-  "uuid": "4UuPZql3ePrlOi-zPbfok",
+  "uuid": "OE5uoUl9s6D7V91lR36FB",
   "method": "GET",
   "path": "/codes/{code}/detail",
   "pathTemplate": "/codes/{code}/detail",

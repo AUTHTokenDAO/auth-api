@@ -2,7 +2,7 @@
   "title": "View Stats",
   "description": "",
   "permalink": "t~stats~stats~get~stats",
-  "uuid": "iMzdPJmFpNP6efo4mxb2r",
+  "uuid": "nb5wQ2QBOsAmmx2PC8LxF",
   "method": "GET",
   "path": "/stats",
   "pathTemplate": "/stats",

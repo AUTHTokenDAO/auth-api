@@ -1,9 +1,9 @@
 {
-  "title": "Stats Reward Code Batch",
-  "description": "Vendor view into the stats for a batch of Reward Codes (number redeemed, total, units, duration).",
-  "permalink": "t~codes~reward~codes~get~codes~batch~purchaseorderid",
-  "uuid": "1c0j1f2jHDIv8kYKQWXYy",
-  "method": "GET",
+  "title": "Manage Reward Code Batch",
+  "description": "Ability to Manage a batch of Reward Codes by the Vendor. Includes assigning various attributes to the batch (after minted). Only the original purchasing Vendor\nof the batch can make modifications.\n\n+ redirectURL (string) - URL that users should be redirected to after redeeming a Reward Code (query params will include verification code and additional redemption data)\n\n+ label (string) - change the vendor assigned label for this batch of codes",
+  "permalink": "t~codes~reward~codes~post~codes~batch~purchaseorderid",
+  "uuid": "01zydg2VTjAdVWfKpuIeZ",
+  "method": "POST",
   "path": "/codes/batch/{purchaseOrderId}",
   "pathTemplate": "/codes/batch/{purchaseOrderId}",
   "parameters": [],
@@ -22,13 +22,13 @@
       "request": {
         "title": "",
         "description": "",
-        "method": "GET",
+        "method": "POST",
         "headers": []
       },
       "response": {
         "title": "",
         "description": "",
-        "statusCode": "200",
+        "statusCode": "201",
         "contentType": "application/json",
         "headers": [
           {
@@ -40,7 +40,7 @@
             }
           }
         ],
-        "body": "  {\n      \"label\": \"2022_ST_PATRICK_PROMO\",\n      \"vendor_slug\": \"ultimatekicks\",\n      \"units\": 10,\n      \"duration\": 52,\n      \"total_codes\": 1000,\n      \"total_redeemed\": 312\n  }\n\n"
+        "body": "    {\n    }\n\n"
       }
     }
   ]

@@ -2,7 +2,7 @@
   "title": "Mint Reward Codes",
   "description": "Mint new Reward Codes for a Vendor (API request must be authenticated as the vendor and the Reward Codes will be assigned to that Vendor).\n\n+ label (string, required) - optional vendor supplied label for this batch of Reward Codes (private and only visible to the vendor)\n\n+ total (int, required) - the number of Reward Codes that should be minted\n\n+ units (int, required) - the number of Reward Units for each Reward Code\n\n+ duration (int, required) - the number of weeks the Reward Codes will be active for once redeemed (1 to 260 weeks)\n\nNOTE: The cost to the Vendor to mint each Reward Code varies both on the Reward Units assigned to each code (per drop) as well as the duration of the rewards.",
   "permalink": "t~codes~reward~codes~post~codes~mint",
-  "uuid": "JGwfaUINeuh_vXCsR2l1r",
+  "uuid": "Qun_bTlnpz61HaB_edZXS",
   "method": "POST",
   "path": "/codes/mint",
   "pathTemplate": "/codes/mint",
