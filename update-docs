@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Update static HTML from OpenAPI yaml docs.
+#
+# see https://github.com/swathysubhash/docprint
+
+docprint -p './build/apib/polls.apib' -d './build/docs' -h './build/files/header.html' -c './build/files/custom.css'
