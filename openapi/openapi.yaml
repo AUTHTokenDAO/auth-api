@@ -226,22 +226,43 @@ paths:
         Mint new Reward Codes for a Vendor (API request must be authenticated as
         the vendor and the Reward Codes will be assigned to that Vendor).
 
-        + label (string, required) - optional vendor supplied label for this
-        batch of Reward Codes (private and only visible to the vendor)
-
-        + total (int, required) - the number of Reward Codes that should be minted
-
-        + units (int, required) - the number of Reward Units for each Reward Code
-
-        + duration (int, required) - the number of weeks the Reward Codes will
-        be active for once redeemed (1 to 260 weeks)
-
         NOTE: The cost to the Vendor to mint each Reward Code varies both on the
         Reward Units assigned to each code (per drop) as well as the duration of
         the rewards.
       tags:
         - vendors
-      parameters: []
+      parameters:
+        - name: label
+          in: query
+          description: >-
+            vendor supplied label for this
+            batch of Reward Codes (private and only visible to the vendor)
+          required: true
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 100
+        - name: total
+          in: query
+          description: number of Reward Codes that should be minted
+          required: true
+          schema:
+            type: integer
+        - name: units
+          in: query
+          description: number of Reward Units for each Reward Code
+          required: true
+          schema:
+              type: integer
+              maximum: 10000
+        - name: duration
+          in: query
+          description: number of weeks the Reward Codes will be active for once redeemed
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 260
   /purchases/{order_id}:
     get:
       responses:
