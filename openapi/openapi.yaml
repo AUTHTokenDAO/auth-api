@@ -291,7 +291,7 @@ paths:
 
         If a cursor field is present in the response, more results are available.
       tags:
-        - Vendor Management
+        - Vendors
       parameters:
           - name: cursor
             in: query
