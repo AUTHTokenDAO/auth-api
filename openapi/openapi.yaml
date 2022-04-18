@@ -352,10 +352,10 @@ paths:
           description: Failed
         "200":
           description: OK
-      summary: Current Oracle Prics for AUTH
+      summary: Current AUTH Price
       operationId: oracle_price
       description: >-
-        The current Oracle Price for AUTH and the block the price took effect.
+        Current Oracle Price for AUTH and the block the price took effect.
       tags:
         - oracle
       parameters: []
@@ -367,7 +367,7 @@ paths:
           description: Failed
         "200":
           description: OK
-      summary: Current and Historical Oracle Prices for AUTH
+      summary: Historical AUTH Prices
       operationId: historical_oracle_prices
       description: >-
         The current and historical Oracle Prices for AUTH including the block
