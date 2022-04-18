@@ -352,8 +352,23 @@ paths:
           description: Failed
         "200":
           description: OK
+      summary: Current Oracle Prics for AUTH
+      operationId: oracle_price
+      description: >-
+        The current Oracle Price for AUTH and the block the price took effect.
+      tags:
+        - oracle
+      parameters: []
+              
+  /oracle/prices:
+    get:
+      responses:
+        "400":
+          description: Failed
+        "200":
+          description: OK
       summary: Current and Historical Oracle Prices for AUTH
-      operationId: historical_auth_prices
+      operationId: historical_oracle_prices
       description: >-
         The current and historical Oracle Prices for AUTH including the block
         that they took effect. Pagination by cursor.
