@@ -25,7 +25,7 @@ info:
     ```
   contact:
     name: AUTH Token API Support
-    url: https://discord.com/invite/P842Hxfz
+    url: https://discord.gg/U2FnxTmNed
 servers:
   - url: "https://{tenant}/api/v1"
     variables:
