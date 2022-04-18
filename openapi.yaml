@@ -3,7 +3,7 @@ info:
   title: AUTH Token API
   version: 1.0.0
   description: >-
-    This describes the API for accessing AUTH Token data including both public
+    This API is documented in **OpenAPI format** and describes how to access AUTH Token data including both public
     data on the blockchain, as well as management API for authenticated vendors and apps.
 
     WARNING: This API is an early draft and in active development. We are changing things
@@ -23,6 +23,9 @@ info:
     ```http
        Authorization: Bearer [USER_OAUTH_TOKEN]
     ```
+  contact:
+    name: AUTH Token API Support
+    url: https://discord.com/invite/P842Hxfz
 paths:
   /codes/redeem:
     post:
@@ -38,8 +41,10 @@ paths:
                     verification: 1f69ec4d-72f8-4d41-bb67-aa67ac476b45
                     wallet: XXXXXX
                   - {}
+        "405":
+          description: Invalid input
       summary: Redeem Code
-      operationId: Redeem Code
+      operationId: redeem_code
       description: >-
         NOTE: This may not be exposed to users, and instead the only redemption
         path is via theauthtoken.com/redeem portal to allow for tighter Vendor
@@ -97,8 +102,10 @@ paths:
                     redemption:
                       redeemed_utc: "2022-02-29T04:20:00Z"
                       wallet: XXXXXX
+        "400":
+          description: Invalid Code
       summary: Code Redemption Status
-      operationId: Code Redemption Status
+      operationId: code_statu
       description: >-
         Check if a Reward Code has been redeemed (either with verification code
         or reward code). Prefer using Verification Codes wherever possible to
@@ -124,26 +131,56 @@ paths:
           description: OK
           headers: {}
           content: {}
+        "400":
+          description: Invalid Code
       summary: Code Details
-      operationId: Code Details
+      operationId: code_details
       description: >-
         Extended detail on a Reward Code. This is only available when
         authenticated as the Vendor who minted the code originally.
       tags:
         - Codes
-      parameters: []
+      parameters:
+        - name: code
+          in: path
+          description: >-
+            check using the Verification Code (or the actual Reward Code) if a
+            Reward has been redeemed
+          required: true
+          schema:
+            type: string
   /codes/{code}/extended:
     post:
-      responses: {}
+      responses:
+        "200":
+          description: successful operation
+        "400":
+          description: Invalid Code
+          content:
+            application/json:
+              example:
+                status: 400
+                message: "Invalid Code"
       summary: Update Details
-      operationId: Update Details
+      operationId: update_code_details
       description: Update extended detail on a Reward Code. TBD
       tags:
         - Codes
-      parameters: []
+      parameters:
+        - name: code
+          in: path
+          description: >-
+            check using the Verification Code (or the actual Reward Code) if a
+            Reward has been redeemed
+          required: true
+          schema:
+            type: string
+
   /codes/mint:
     post:
       responses:
+        "400":
+          description: Failed to mint
         "201":
           description: Created
           headers: {}
@@ -160,7 +197,7 @@ paths:
                     verification: 1f69ec4d-72f8-4d41-bb67-aa67ac476b45
                   - {}
       summary: Mint Reward Codes
-      operationId: Mint Reward Codes
+      operationId: mint_reward_codes
       description: >-
         Mint new Reward Codes for a Vendor (API request must be authenticated as
         the vendor and the Reward Codes will be assigned to that Vendor).
@@ -181,7 +218,7 @@ paths:
       tags:
         - Codes
       parameters: []
-  /codes/batch/{purchaseOrderId}:
+  /purchases/{order_id}:
     get:
       responses:
         "200":
@@ -196,16 +233,27 @@ paths:
                 duration: 52
                 total_codes: 1000
                 total_redeemed: 312
+        "400":
+          description: Failed
       summary: Stats Reward Code Batch
-      operationId: Stats Reward Code Batch
+      operationId: reward_code_batch_stats
       description: >-
         Vendor view into the stats for a batch of Reward Codes (number redeemed,
         total, units, duration).
       tags:
         - Codes
-      parameters: []
+      parameters:
+        - name: order_id
+          in: path
+          description: >-
+            the purchase_order_id for the batch
+          required: true
+          schema:
+            type: string
     post:
       responses:
+        "400":
+          description: Failed
         "201":
           description: Created
           headers: {}
@@ -213,7 +261,7 @@ paths:
             application/json:
               example: {}
       summary: Manage Reward Code Batch
-      operationId: Manage Reward Code Batch
+      operationId: reward_code_batch_manage
       description: >-
         Ability to Manage a batch of Reward Codes by the Vendor. Includes
         assigning various attributes to the batch (after minted). Only the
@@ -230,6 +278,8 @@ paths:
   /vendors:
     get:
       responses:
+        "400":
+          description: Failed
         "200":
           description: OK
           headers: {}
@@ -250,9 +300,13 @@ paths:
         - Vendors
       parameters: []
     post:
-      responses: {}
+      responses:
+        200:
+          description: OK
+        400:
+          description: Failed
       summary: Register Vendor
-      operationId: Register Vendor
+      operationId: register_vendor
       description: >-
         Register a new Vendor, including the intial Vendor onboarding fee or the annual AUTH burn fee. NOTE: This API is not necessary for now as all Vendors go through an approval process and are manually added to the internal database.
       tags:
@@ -261,6 +315,8 @@ paths:
   /vendors/{vendor_slug}:
     get:
       responses:
+        "400":
+          description: Failed
         "200":
           description: OK
           headers: {}
@@ -276,23 +332,30 @@ paths:
                 created_utc: "2021-12-25T15:12:55Z"
                 status: active
       summary: Vendors
-      operationId: Vendors
-      description: ""
+      operationId: vendors
+      description: "Data about a given Vendor"
       tags:
         - Vendors
-      parameters: []
-  /oracle/prices/current] [GET:
+      parameters:
+        - name: vendor_slug
+          in: path
+          description: >-
+            the slug identifier for the Vendor
+          required: true
+          schema:
+            type: string
+  /oracle/prices/current:
     get:
       responses:
+        "400":
+          description: Failed
         "200":
           description: OK
           headers: {}
           content: {}
-      summary: Historical AUTH Prices [/oracle/prices]
-      operationId: Historical AUTH Prices [/oracle/prices]
+      summary: Current and Historical Oracle Prices for AUTH
+      operationId: historical_auth_prices
       description: >-
-        Current and Historical Oracle Prices for AUTH
-
         The current and historical Oracle Prices for AUTH including the block
         that they took effect. Pagination by cursor.
 
@@ -303,6 +366,8 @@ paths:
   /stats:
     get:
       responses:
+        "400":
+          description: Failed
         "200":
           description: OK
           headers: {}
@@ -311,7 +376,7 @@ paths:
               example:
                 token_supply: 124112460.312515
       summary: View Stats
-      operationId: View Stats
+      operationId: stats
       description: ""
       tags:
         - Stats
@@ -320,8 +385,10 @@ components:
   schemas: {}
 tags:
   - name: Codes
+    description: Reward Codes
   - name: Vendors
+    description: AUTH Vendors
   - name: Oracle
-    description: Get or publish Oracle prices for the AUTH Token.
+    description: Oracle prices for the AUTH Token
   - name: Stats
     description: Blockchain Stats
