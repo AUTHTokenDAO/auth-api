@@ -2,6 +2,12 @@
 #
 # Update static HTML from OpenAPI yaml docs.
 #
-# see https://github.com/swathysubhash/docprint
+# see https://dmlls.medium.com/redoc-docs-on-gh-pages-97a8926e9e0f
 
-docprint -p './build/apib/polls.apib' -d './build/docs' -h './build/files/header.html' -c './build/files/custom.css'
+npx redoc-cli bundle openapi/openapi.yaml
+
+mv redoc-static.html docs/index.html
+
+# add the favicon to 7th row of the file
+sed -i '7 i \ \ <link rel="icon" type="image/png" href="favicon.ico"/>' docs/index.html
+
