@@ -1,0 +1,20 @@
+{
+  "title": "Register Vendor",
+  "description": "Register a new Vendor, including the intial Vendor onboarding fee or the annual AUTH burn fee. NOTE: This API is not necessary for\nnow as all Vendors go through an approval process and are manually added to the internal database.",
+  "permalink": "t~vendors~register~vendor~undefined~vendors",
+  "uuid": "-5zu3TrQufpviCOyqnaPf",
+  "path": "/vendors",
+  "pathTemplate": "/vendors",
+  "parameters": [],
+  "meta": {
+    "resource": {
+      "title": "Register Vendor",
+      "permalink": "r~vendors~register~vendor"
+    },
+    "group": {
+      "title": "Vendors",
+      "permalink": "g~vendors"
+    }
+  },
+  "transactions": []
+}

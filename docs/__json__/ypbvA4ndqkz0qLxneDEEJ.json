@@ -1,0 +1,20 @@
+{
+  "title": "Update Details",
+  "description": "Update extended detail on a Reward Code. TBD",
+  "permalink": "t~codes~reward~codes~undefined~codes~code~extended",
+  "uuid": "ypbvA4ndqkz0qLxneDEEJ",
+  "path": "/codes/{code}/extended",
+  "pathTemplate": "/codes/{code}/extended",
+  "parameters": [],
+  "meta": {
+    "resource": {
+      "title": "Reward Codes",
+      "permalink": "r~codes~reward~codes"
+    },
+    "group": {
+      "title": "Codes",
+      "permalink": "g~codes"
+    }
+  },
+  "transactions": []
+}

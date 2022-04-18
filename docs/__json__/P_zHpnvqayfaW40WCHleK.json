@@ -1,0 +1,47 @@
+{
+  "title": "Manage Reward Code Batch",
+  "description": "Ability to Manage a batch of Reward Codes by the Vendor. Includes assigning various attributes to the batch (after minted). Only the original purchasing Vendor\nof the batch can make modifications.\n\n+ redirectURL (string) - URL that users should be redirected to after redeeming a Reward Code (query params will include verification code and additional redemption data)\n\n+ label (string) - change the vendor assigned label for this batch of codes",
+  "permalink": "t~codes~reward~codes~post~codes~batch~purchaseorderid",
+  "uuid": "P_zHpnvqayfaW40WCHleK",
+  "method": "POST",
+  "path": "/codes/batch/{purchaseOrderId}",
+  "pathTemplate": "/codes/batch/{purchaseOrderId}",
+  "parameters": [],
+  "meta": {
+    "resource": {
+      "title": "Reward Codes",
+      "permalink": "r~codes~reward~codes"
+    },
+    "group": {
+      "title": "Codes",
+      "permalink": "g~codes"
+    }
+  },
+  "transactions": [
+    {
+      "request": {
+        "title": "",
+        "description": "",
+        "method": "POST",
+        "headers": []
+      },
+      "response": {
+        "title": "",
+        "description": "",
+        "statusCode": "201",
+        "contentType": "application/json",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "example": "application/json",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "body": "    {\n    }\n\n"
+      }
+    }
+  ]
+}

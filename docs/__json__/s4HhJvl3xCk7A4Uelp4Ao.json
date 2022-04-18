@@ -1,0 +1,47 @@
+{
+  "title": "Mint Reward Codes",
+  "description": "Mint new Reward Codes for a Vendor (API request must be authenticated as the vendor and the Reward Codes will be assigned to that Vendor).\n\n+ label (string, required) - optional vendor supplied label for this batch of Reward Codes (private and only visible to the vendor)\n\n+ total (int, required) - the number of Reward Codes that should be minted\n\n+ units (int, required) - the number of Reward Units for each Reward Code\n\n+ duration (int, required) - the number of weeks the Reward Codes will be active for once redeemed (1 to 260 weeks)\n\nNOTE: The cost to the Vendor to mint each Reward Code varies both on the Reward Units assigned to each code (per drop) as well as the duration of the rewards.",
+  "permalink": "t~codes~reward~codes~post~codes~mint",
+  "uuid": "s4HhJvl3xCk7A4Uelp4Ao",
+  "method": "POST",
+  "path": "/codes/mint",
+  "pathTemplate": "/codes/mint",
+  "parameters": [],
+  "meta": {
+    "resource": {
+      "title": "Reward Codes",
+      "permalink": "r~codes~reward~codes"
+    },
+    "group": {
+      "title": "Codes",
+      "permalink": "g~codes"
+    }
+  },
+  "transactions": [
+    {
+      "request": {
+        "title": "",
+        "description": "",
+        "method": "POST",
+        "headers": []
+      },
+      "response": {
+        "title": "",
+        "description": "",
+        "statusCode": "201",
+        "contentType": "application/json",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "example": "application/json",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "body": "    {\n      \"label\": \"2022_ST_PATRICK_PROMO\",\n      \"vendor_slug\": \"ultimatekicks\",\n      \"units\": 10,\n      \"duration\": 52,\n      \"total_codes\": 1000,\n      \"codes\": [\n        { \"code\": \"8af4ed0f-ee0d-477f-8c5a-d5247528b74e\",\n          \"verification\": \"1f69ec4d-72f8-4d41-bb67-aa67ac476b45\" },\n        {}\n      ]\n    }\n\n"
+      }
+    }
+  ]
+}
