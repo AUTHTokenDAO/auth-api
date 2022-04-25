@@ -23,6 +23,7 @@ Example data sent on a POST webhook callback after AUTH redemption to `https://s
   "redeemed_utc": "2022-01-01T01:23:45Z",
   "expiry_utc": "2024-01-01T01:23:45Z",
   "reward_units": 10,
-  "duration_weeks": 104
+  "duration_weeks": 104,
+  "vendor_label": "<label_from_purchase_batch_if_any>"
 }
 ```
